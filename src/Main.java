@@ -1,19 +1,19 @@
 public class Main {
     public static void main(String[] args) {
-        Conta primeiraConta = new Conta();
-        Conta segundaConta = new Conta();
+        Titular pedro = new Titular("Pedro Martins", "000.111.222.33");
+        Titular cassia = new Titular("Cassia Senna", "333.444.555.55");
 
-        primeiraConta.saldo = 200;
-        System.out.println("Saldo: " + primeiraConta.saldo);
+        Conta contaPedro = new Conta(375, 1392, 24839, pedro);
+        Conta contaCassia = new Conta(200, 1231, 32452, cassia);
 
-        Conta contaReferencia = primeiraConta;
+        contaCassia.saque(30);
+        contaPedro.deposito(30);
 
-        contaReferencia.saldo=300;
-        System.out.println("Saldo dentro da primeira conta: " + primeiraConta.saldo +
-                "\nSaldo dentro da conta referencia: " + contaReferencia.saldo);
+        contaPedro.transferencia(50, contaCassia);
 
-        System.out.println("As contas primeiraConta e contaReferencia são a mesma coisa?\nR: " + primeiraConta.equals(contaReferencia));
-        System.out.println("As contas primeiraConta e segundaConta são a mesma coisa?\nR: " + primeiraConta.equals(segundaConta));
+        System.out.println(contaPedro);
+        System.out.println(contaCassia);
+        System.out.println("Total de contas: " + Conta.getTotalContas());
 
     }
 }
